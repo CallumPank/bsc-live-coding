@@ -16,15 +16,46 @@ int main(int argc, char* args[])
 
 	//Create a window, note we have to free the pointer returned using the DestroyWindow Function
 	//https://wiki.libsdl.org/SDL_CreateWindow
-	SDL_Window* window = SDL_CreateWindow("SDL2 Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN );
+	SDL_Window* window = SDL_CreateWindow("SDL2 Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN|SDL_WINDOW_OPENGL);
 	//Checks to see if the window has been created, the pointer will have a value of some kind
 	if (window == nullptr)
 	{
 		//Show error
-		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "SDL_CreateWindow failed", SDL_GetError(), NULL);
+		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, SDL_GetError(), "SDL_CreateWindow failed", NULL);
 		//Close the SDL Library
 		//https://wiki.libsdl.org/SDL_Quit
 		SDL_Quit();
+		return 1;
+	}
+
+
+	//Request 3.2 Core GL
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 1);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+	//Creating Core Profile
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+
+	SDL_GLContext gl_Context = SDL_GL_CreateContext(window);
+	if (gl_Context == nullptr)
+	{
+		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "SDL_CreateContext Failed", SDL_GetError(), NULL);
+
+		SDL_DestroyWindow(window);
+		SDL_Quit();
+
+		return 1;
+	}
+
+	//Init GLEW
+	glewExperimental = GL_TRUE;
+	GLenum err = glewInit();
+
+	if (err != GLEW_OK)
+	{
+		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, (char*)glewGetErrorString(err), "GLEW INIT failed", NULL);
+		SDL_DestroyWindow(window);
+		SDL_Quit();
+
 		return 1;
 	}
 
@@ -58,21 +89,16 @@ int main(int argc, char* args[])
 			}
 		}
 
-		//Grab the window surface, please note we DON'T need to free the memory on this, it will be automatically collected
-		//when the window is destroyed
-		//https://wiki.libsdl.org/SDL_GetWindowSurface
-		SDL_Surface* screenSurface= SDL_GetWindowSurface(window);
-		//Fill the surface with black
-		//https://wiki.libsdl.org/SDL_FillRect
-		//https://wiki.libsdl.org/SDL_MapRGB
-		SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0, 0, 0));
+		glClearColor(1.0, 0.0, 0.0, 1.0);
+		glClear(GL_COLOR_BUFFER_BIT);
 
-		//Update the surface on the screen
-		//https://wiki.libsdl.org/SDL_UpdateWindowSurface
-		SDL_UpdateWindowSurface(window);
+		SDL_GL_SwapWindow(window);
+
+		//Update Game and Draw with OpenGL!
 	}
 
-
+	//Delete Context
+	SDL_GL_DeleteContext(gl_Context);
 	//Destroy the window and quit SDL2, NB we should do this after all cleanup in this order!!!
 	//https://wiki.libsdl.org/SDL_DestroyWindow
 	SDL_DestroyWindow(window);
