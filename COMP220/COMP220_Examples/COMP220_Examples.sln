@@ -5,7 +5,11 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0_SDL_Window", "0_SDL_Window\0_SDL_Window.vcxproj", "{BAD28DBE-A88A-46D6-B960-D9FF71B9250D}"
 EndProject
+<<<<<<< HEAD
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01_OpenGL", "01_OpenGl\01_OpenGL.vcxproj", "{9306D1E4-F68D-4D63-AEE7-AF03D86DA6AF}"
+=======
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01_OpenGL", "01_OpenGL\01_OpenGL.vcxproj", "{29BDA066-E94B-4C2C-8693-40EE5B921C1F}"
+>>>>>>> 01a6b5fc3368b5671dc6aae6aee7ed2e95d6ce4f
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +27,7 @@ Global
 		{BAD28DBE-A88A-46D6-B960-D9FF71B9250D}.Release|x64.Build.0 = Release|x64
 		{BAD28DBE-A88A-46D6-B960-D9FF71B9250D}.Release|x86.ActiveCfg = Release|Win32
 		{BAD28DBE-A88A-46D6-B960-D9FF71B9250D}.Release|x86.Build.0 = Release|Win32
+<<<<<<< HEAD
 		{9306D1E4-F68D-4D63-AEE7-AF03D86DA6AF}.Debug|x64.ActiveCfg = Debug|x64
 		{9306D1E4-F68D-4D63-AEE7-AF03D86DA6AF}.Debug|x64.Build.0 = Debug|x64
 		{9306D1E4-F68D-4D63-AEE7-AF03D86DA6AF}.Debug|x86.ActiveCfg = Debug|Win32
@@ -31,6 +36,16 @@ Global
 		{9306D1E4-F68D-4D63-AEE7-AF03D86DA6AF}.Release|x64.Build.0 = Release|x64
 		{9306D1E4-F68D-4D63-AEE7-AF03D86DA6AF}.Release|x86.ActiveCfg = Release|Win32
 		{9306D1E4-F68D-4D63-AEE7-AF03D86DA6AF}.Release|x86.Build.0 = Release|Win32
+=======
+		{29BDA066-E94B-4C2C-8693-40EE5B921C1F}.Debug|x64.ActiveCfg = Debug|x64
+		{29BDA066-E94B-4C2C-8693-40EE5B921C1F}.Debug|x64.Build.0 = Debug|x64
+		{29BDA066-E94B-4C2C-8693-40EE5B921C1F}.Debug|x86.ActiveCfg = Debug|Win32
+		{29BDA066-E94B-4C2C-8693-40EE5B921C1F}.Debug|x86.Build.0 = Debug|Win32
+		{29BDA066-E94B-4C2C-8693-40EE5B921C1F}.Release|x64.ActiveCfg = Release|x64
+		{29BDA066-E94B-4C2C-8693-40EE5B921C1F}.Release|x64.Build.0 = Release|x64
+		{29BDA066-E94B-4C2C-8693-40EE5B921C1F}.Release|x86.ActiveCfg = Release|Win32
+		{29BDA066-E94B-4C2C-8693-40EE5B921C1F}.Release|x86.Build.0 = Release|Win32
+>>>>>>> 01a6b5fc3368b5671dc6aae6aee7ed2e95d6ce4f
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
