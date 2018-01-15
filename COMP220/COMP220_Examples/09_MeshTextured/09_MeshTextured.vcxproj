@@ -138,6 +138,7 @@ copy ..\..\..\Libraries\glew-2.1.0\bin\Release\x64\glew32.dll "$(OutDir)\glew32.
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Control.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />

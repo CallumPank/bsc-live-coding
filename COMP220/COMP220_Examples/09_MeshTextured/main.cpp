@@ -42,6 +42,9 @@ int main(int argc, char* args[])
 		SDL_Quit();
 		return 1;
 	}
+
+
+
 	//Initialize GLEW
 	glewExperimental = GL_TRUE;
 	GLenum glewError = glewInit();
@@ -52,7 +55,7 @@ int main(int argc, char* args[])
 
 	std::vector<Mesh*> meshes;
 	loadMeshFromFile("Tank1.FBX", meshes);
-	GLuint textureID = loadTextureFromFile("Tank1DF.png");
+	GLuint textureID = loadTextureFromFile("brai.jpg");
 
 	vec3 trianglePosition = vec3(0.0f,0.0f,0.0f);
 	vec3 triangleScale = vec3(1.0f, 1.0f, 1.0f);
@@ -99,6 +102,7 @@ int main(int argc, char* args[])
 	int lastTicks = SDL_GetTicks();
 	int currentTicks = SDL_GetTicks();
 
+}
 
 	//Event loop, we will loop until running is set to false, usually if escape has been pressed or window is closed
 	bool running = true;
@@ -121,12 +125,15 @@ int main(int argc, char* args[])
 			case SDL_KEYDOWN:
 				//Check the actual key code of the key that has been pressed
 				switch (ev.key.keysym.sym)
+
 				{
 					//Escape key
 				case SDLK_ESCAPE:
 					running = false;
 					break;
+
 				}
+				
 			}
 		}
 
